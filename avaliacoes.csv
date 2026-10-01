@@ -1,0 +1,19 @@
+﻿pergunta,resposta,nota,categoria
+Como faço para redefinir minha senha?,Você pode redefinir sua senha pela opção 'Esqueci minha senha' na tela de login.,5,suporte
+Qual é o prazo para receber meu pedido?,O prazo estimado é de 5 a 7 dias úteis após a confirmação do pagamento.,4,entrega
+Posso cancelar uma compra?,Sim. O cancelamento pode ser solicitado antes do envio do pedido.,5,compras
+Quais formas de pagamento são aceitas?,"Aceitamos cartão de crédito, cartão de débito e Pix.",5,financeiro
+Como acompanho meu pedido?,Acesse sua conta e consulte o código de rastreamento na área de pedidos.,4,entrega
+Minha cobrança veio duplicada. O que faço?,Envie os detalhes da cobrança para verificarmos e corrigirmos o lançamento duplicado.,3,financeiro
+Vocês atendem aos finais de semana?,"Nosso atendimento funciona de segunda a sábado, das 8h às 18h.",5,suporte
+Como altero meu endereço de entrega?,O endereço pode ser alterado antes da confirmação do envio do pedido.,4,cadastro
+Recebi um produto com defeito. Como proceder?,Entre em contato com o suporte informando o problema para iniciarmos a análise da troca.,4,pós-venda
+Existe desconto para pagamento via Pix?,"Em algumas campanhas, oferecemos descontos para pagamentos via Pix.",3,financeiro
+Como solicito uma segunda via da nota fiscal?,Solicite a segunda via informando o número do pedido ao nosso atendimento.,5,documentação
+Quanto tempo demora para o reembolso?,"Após a aprovação, o reembolso pode levar alguns dias úteis, conforme o meio de pagamento.",4,financeiro
+Posso trocar o tamanho de um produto?,"Sim, desde que o produto esteja dentro das condições e do prazo de troca.",5,trocas
+O aplicativo está apresentando erro ao abrir.,"Tente atualizar o aplicativo e reiniciar o dispositivo. Se o erro continuar, contate o suporte.",3,suporte
+Como atualizo meus dados cadastrais?,"Acesse seu perfil, selecione 'Dados pessoais' e altere as informações necessárias.",5,cadastro
+Meu pedido ainda não foi entregue.,"Verifique o rastreamento e, se o prazo estimado já tiver passado, entre em contato com o suporte.",4,entrega
+Há cobrança de taxa para troca?,A cobrança depende do motivo da troca e das condições previstas na política da empresa.,3,trocas
+Como faço para consultar minhas faturas?,Acesse sua conta e entre na seção financeira para visualizar suas faturas.,5,financeiro
