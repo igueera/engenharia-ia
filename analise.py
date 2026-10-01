@@ -1,8 +1,8 @@
 import csv
 
-with open("avaliacoes.csv", encoding="utf-8", newline="") as arquivo:
+with open("avaliacoes.csv", encoding="utf-8-sig", newline="") as arquivo:
     leitor = csv.DictReader(arquivo)
     for linha in leitor:
-        print(linha["nota"], linha["categoria"])
+        print(linha["pergunta"])
     
 
