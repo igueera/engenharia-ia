@@ -1,37 +1,55 @@
 import csv
 
-notas = []
-por_categoria = {}
-baixas = []
+def carregar(caminho):
+    avaliacoes = []
+    with open(caminho, encoding="utf-8-sig", newline="") as arquivo:
+        leitor = csv.DictReader(arquivo)
+        for numero, linha in enumerate(leitor, start=2):
+            try:
+                linha["nota"] = int(linha["nota"])
+            except ValueError:
+                print(f"Aviso: linha {numero} ignorada, nota inválida: {linha['nota']!r}")
+                continue
+            avaliacoes.append(linha)
+    return avaliacoes
 
-with open("avaliacoes.csv", encoding="utf-8-sig", newline="") as arquivo:
-    leitor = csv.DictReader(arquivo)
-    for numero, linha in enumerate(leitor, start=2):
-        try: 
-            nota = int(linha["nota"])
-        except ValueError:
-            print(f"Aviso: linha {numero} ignorada, nota inválida: {linha['nota']!r}")
-            continue
+
+def calcular_media(notas):
+    return sum(notas) / len(notas)
+
+def agrupar_por_categoria(avaliacoes):
+    por_categoria = {}
+    for linha in avaliacoes:
         categoria = linha["categoria"]
-        notas.append(nota)
-
         if categoria not in por_categoria:
             por_categoria[categoria] = []
-        por_categoria[categoria].append(nota)
+        por_categoria[categoria].append(linha["nota"])
+    return por_categoria
 
-        if nota <= 2:
+def filtrar_baixas(avaliacoes):
+    baixas = []
+    for linha in avaliacoes:
+        if linha["nota"] <= 2:
             baixas.append(linha)
+    return baixas
 
+def main():
+    avaliacoes = carregar("avaliacoes.csv")
+    if not avaliacoes:
+        print("Nenhuma avaliação válida encontrada.")
+        return
 
+    notas = []
+    for linha in avaliacoes:
+        notas.append(linha["nota"])
+    print(f"Nota média geral: {calcular_media(notas):.2f}")
 
-media = sum(notas) / len(notas)
-print(f"Nota média geral: {media:.2f}")
-print("Nota média por categoria:")
+    print("Nota média por categoria:")
+    for categoria, lista in agrupar_por_categoria(avaliacoes).items():
+        print(f"  {categoria}: {calcular_media(lista):.2f}")
 
-for categoria, lista in por_categoria.items():
-    media_categoria = sum(lista) / len(lista)
-    print(f"{categoria}: {media_categoria: .2f}")
-    
-print("Respostas com nota menor ou igual a 2:")
-for linha in baixas:
-    print(f"  [{linha['nota']}] {linha['resposta']}")
+    print("Respostas com nota menor ou igual a 2:")
+    for linha in filtrar_baixas(avaliacoes):
+        print(f"  [{linha['nota']}] {linha['resposta']}")
+
+main()
