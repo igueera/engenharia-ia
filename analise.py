@@ -6,8 +6,12 @@ baixas = []
 
 with open("avaliacoes.csv", encoding="utf-8-sig", newline="") as arquivo:
     leitor = csv.DictReader(arquivo)
-    for linha in leitor:
-        nota = int(linha["nota"])
+    for numero, linha in enumerate(leitor, start=2):
+        try: 
+            nota = int(linha["nota"])
+        except ValueError:
+            print(f"Aviso: linha {numero} ignorada, nota inválida: {linha['nota']!r}")
+            continue
         categoria = linha["categoria"]
         notas.append(nota)
 
