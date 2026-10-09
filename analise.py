@@ -6,10 +6,16 @@ def carregar(caminho):
         leitor = csv.DictReader(arquivo)
         for numero, linha in enumerate(leitor, start=2):
             try:
-                linha["nota"] = int(linha["nota"])
+                nota = int(linha["nota"])
             except (ValueError, TypeError):
                 print(f"Aviso: linha {numero} ignorada, nota inválida: {linha['nota']!r}")
                 continue
+
+            if nota < 1 or nota > 5:                                         # novo
+                print(f"Aviso: linha {numero} ignorada, nota fora da faixa de 1 a 5: {nota}")
+                continue
+
+            linha["nota"] = nota
             avaliacoes.append(linha)
     return avaliacoes
 
