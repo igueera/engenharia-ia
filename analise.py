@@ -2,22 +2,23 @@ import csv
 
 def carregar(caminho):
     avaliacoes = []
+    problemas = []                                                    # novo
     with open(caminho, encoding="utf-8-sig", newline="") as arquivo:
         leitor = csv.DictReader(arquivo)
         for numero, linha in enumerate(leitor, start=2):
             try:
                 nota = int(linha["nota"])
             except (ValueError, TypeError):
-                print(f"Aviso: linha {numero} ignorada, nota inválida: {linha['nota']!r}")
+                problemas.append({"linha": numero, "motivo": f"nota inválida: {linha['nota']!r}"})
                 continue
 
-            if nota < 1 or nota > 5:                                         # novo
-                print(f"Aviso: linha {numero} ignorada, nota fora da faixa de 1 a 5: {nota}")
+            if nota < 1 or nota > 5:
+                problemas.append({"linha": numero, "motivo": f"nota fora da faixa de 1 a 5: {nota}"})
                 continue
 
             linha["nota"] = nota
             avaliacoes.append(linha)
-    return avaliacoes
+    return avaliacoes, problemas
 
 
 def calcular_media(notas):
@@ -41,10 +42,14 @@ def filtrar_baixas(avaliacoes):
 
 def main():
     try:
-        avaliacoes = carregar("avaliacoes.csv")
+        avaliacoes, problemas = carregar("avaliacoes.csv")
     except FileNotFoundError:
         print("Erro: não encontrei o arquivo avaliacoes.csv. Rode o script na pasta onde ele está.")
         return
+
+    for problema in problemas:                                        # novo
+        print(f"Aviso: linha {problema['linha']} ignorada, {problema['motivo']}")
+
     if not avaliacoes:
         print("Nenhuma avaliação válida encontrada.")
         return
