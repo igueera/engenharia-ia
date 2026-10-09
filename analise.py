@@ -67,4 +67,5 @@ def main():
     for linha in filtrar_baixas(avaliacoes):
         print(f"  [{linha['nota']}] {linha['resposta']}")
 
-main()
+if __name__ == "__main__":
+    main()
