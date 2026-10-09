@@ -7,7 +7,7 @@ def carregar(caminho):
         for numero, linha in enumerate(leitor, start=2):
             try:
                 linha["nota"] = int(linha["nota"])
-            except ValueError:
+            except (ValueError, TypeError):
                 print(f"Aviso: linha {numero} ignorada, nota inválida: {linha['nota']!r}")
                 continue
             avaliacoes.append(linha)
