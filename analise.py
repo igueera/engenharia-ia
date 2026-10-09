@@ -40,7 +40,11 @@ def filtrar_baixas(avaliacoes):
     return baixas
 
 def main():
-    avaliacoes = carregar("avaliacoes.csv")
+    try:
+        avaliacoes = carregar("avaliacoes.csv")
+    except FileNotFoundError:
+        print("Erro: não encontrei o arquivo avaliacoes.csv. Rode o script na pasta onde ele está.")
+        return
     if not avaliacoes:
         print("Nenhuma avaliação válida encontrada.")
         return
